@@ -23,14 +23,16 @@ function App() {
     const handleOnDeleteMovie = (imdbId) => {
         confirm("Are you sure you want to delete this movie from the list?") &&
         setMovieList(movieList.filter((mv) => mv.imdbID !== imdbId));
+
+        storeInLocalSession(movieList.filter((mv) => mv.imdbID !== imdbId));
     }
 
     return (<div className="wrapper">
-            {/* Hero section */}
-            <Hero addMovieToList={addMovieToList}/>
-            {/* Display Section */}
-            <Display movieList={movieList} handleOnDeleteMovie={handleOnDeleteMovie}/>
-        </div>);
+        {/* Hero section */}
+        <Hero addMovieToList={addMovieToList}/>
+        {/* Display Section */}
+        <Display movieList={movieList} handleOnDeleteMovie={handleOnDeleteMovie}/>
+    </div>);
 }
 
 export default App;
